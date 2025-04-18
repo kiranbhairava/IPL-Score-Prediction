@@ -1,123 +1,74 @@
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>First Innings Score Predictor</title>
-        <link rel="shortcut icon" href="{{ url_for('static', filename='ipl-favicon.ico') }}">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Score Prediction Result</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ipl-favicon.ico') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
 
-    <body>
-
-        <!-- Website Title -->
-    	<div class="container">
-            <h2 class='container-heading'><span class='heading_first'>First Innings Score Predictor for </span><span class="heading_second">Indian Premier League (IPL)</span></h2>
-            <div class='description'>
-    			<p>A Machine Learning Web App, Built with Flask, Deployed using Heroku.</p>
-    		</div>
-    	</div>
-
-        <!-- Prediction Area -->
-        <div class="prediction-area">
-
-            <!-- IPL Banner - 1 -->
-            <div class='ipl-banner-left'>
-
-                <div class="slider-frame">
-                    <div class="slide-images-up">
-
-                        <!-- Image-1 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='mi.jpg') }}" alt="Mumbai Indians">
-                        </div>
-                        <!-- Image-2 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='srh.png') }}" alt="Sunrisers Hyderabad">
-                        </div>
-                        <!-- Image-3 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='rcb.png') }}" alt="Royal Challengers Bangalore">
-                        </div>
-                        <!-- Image-4 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='dc.png') }}" alt="Delhi Capitals">
-                        </div>
-                        <!-- Image-5 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='rr.png') }}" alt="Rajasthan Royals">
-                        </div>
-                        <!-- Image-6 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='kkr.jpg') }}" alt="Kolkata Knight Riders">
-                        </div>
-                        <!-- Image-7 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='kxip.png') }}" alt="Kings XI Punjab">
-                        </div>
-                        <!-- Image-8 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='csk.png') }}" alt="Chennai Super Kings">
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-			<!-- Result -->
-			<div class="results">
-				<p class='result-p'>The final predicted score (range): {{ lower_limit }} to {{ upper_limit }}</p>
-			</div>
-
-            <!-- IPL Banner - 2 -->
-            <div class='ipl-banner-right'>
-
-                <div class="slider-frame">
-                    <div class="slide-images-down">
-
-                        <!-- Image-1 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='mi.jpg') }}" alt="Mumbai Indians">
-                        </div>
-                        <!-- Image-2 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='srh.png') }}" alt="Sunrisers Hyderabad">
-                        </div>
-                        <!-- Image-3 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='rcb.png') }}" alt="Royal Challengers Bangalore">
-                        </div>
-                        <!-- Image-4 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='dc.png') }}" alt="Delhi Capitals">
-                        </div>
-                        <!-- Image-5 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='kkr.jpg') }}" alt="Kolkata Knight Riders">
-                        </div>
-                        <!-- Image-6 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='rr.png') }}" alt="Rajasthan Royals">
-                        </div>
-                        <!-- Image-7 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='kxip.png') }}" alt="Kings XI Punjab">
-                        </div>
-                        <!-- Image-8 -->
-                        <div class="image-container">
-                            <img class="image-width" src="{{ url_for('static', filename='csk.png') }}" alt="Chennai Super Kings">
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
+<body>
+    <!-- Website Title -->
+    <div class="container">
+        <h2 class='container-heading'>
+            <span class='heading_first'>First Innings Score Predictor for</span>
+            <span class="heading_second">Indian Premier League (IPL)</span>
+        </h2>
+        <div class='description'>
+            <p>A Machine Learning Web App, Built with Flask, Deployed using Heroku.</p>
         </div>
+    </div>
 
-        
+    <!-- Team Logos Section -->
+    <div class="teams-container">
+        <div class="team-logos">
+            <img class="team-logo" src="{{ url_for('static', filename='mi.jpg') }}" alt="Mumbai Indians">
+            <img class="team-logo" src="{{ url_for('static', filename='csk.png') }}" alt="Chennai Super Kings">
+            <img class="team-logo" src="{{ url_for('static', filename='rcb.png') }}" alt="Royal Challengers Bangalore">
+            <img class="team-logo" src="{{ url_for('static', filename='dc.png') }}" alt="Delhi Capitals">
+            <img class="team-logo" src="{{ url_for('static', filename='srh.png') }}" alt="Sunrisers Hyderabad">
+            <img class="team-logo" src="{{ url_for('static', filename='kkr.jpg') }}" alt="Kolkata Knight Riders">
+            <img class="team-logo" src="{{ url_for('static', filename='rr.png') }}" alt="Rajasthan Royals">
+            <img class="team-logo" src="{{ url_for('static', filename='kxip.png') }}" alt="Kings XI Punjab">
+        </div>
+    </div>
 
-    </body>
+    <!-- IPL Decoration Line -->
+    <div class="ipl-decoration"></div>
+
+    <!-- Prediction Area -->
+    <div class="prediction-area">
+        <!-- Result Display -->
+        <div class="results">
+            <h3><i class="fas fa-chart-line"></i> Predicted Score Range</h3>
+            <p class='result-p'>
+                Based on the current match situation, the predicted final score is:
+                <span class="score-range">{{ lower_limit }} to {{ upper_limit }}</span>
+            </p>
+            
+            <!-- Match Summary (if you have this data, otherwise remove) -->
+            {% if batting_team and bowling_team %}
+            <div class="match-summary">
+                <p><strong>{{ batting_team }}</strong> vs <strong>{{ bowling_team }}</strong></p>
+                <p>Current Score: {{ runs }}/{{ wickets }} ({{ overs }} overs)</p>
+                <p>Last 5 overs: {{ runs_in_prev_5 }} runs, {{ wickets_in_prev_5 }} wickets</p>
+            </div>
+            {% endif %}
+            
+            <a href="{{ url_for('home') }}" class="predict-button">
+                <i class="fas fa-redo"></i> Make Another Prediction
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2025 IPL Score Predictor | Cricket Analytics Project</p>
+    </div>
+</body>
 </html>
+
+
